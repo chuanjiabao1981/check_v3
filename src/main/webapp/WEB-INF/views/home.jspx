@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html  xmlns:jsp="http://java.sun.com/JSP/Page"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core"
+	  xmlns:spring="http://www.springframework.org/tags"
+	  xmlns:shiro="http://shiro.apache.org/tags"
+	  version="2.0">
+	  <jsp:directive.page contentType="text/html;charset=UTF-8" /> 
+	  <jsp:output omit-xml-declaration="yes" />
+	  <spring:url value="/logout" var="logoutUrl"/>
+	  
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>
+	Hello world!  
+</h1>
+<shiro:authenticated>
+	Hello, <shiro:principal/>, how are you today?
+    <a href="${logoutUrl}">退出</a>
+	
+</shiro:authenticated>
+<P>  The time on the server is ${serverTime}. </P>
+</body>
+</html>

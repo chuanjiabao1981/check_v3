@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	    <property name="securityManager" ref="securityManager"/>
+	    <property name="loginUrl" value="/login"/>
+    	<property name="successUrl" value="/"/>
+	    <property name="unauthorizedUrl" value="/login"/>
+	    <!--property name="filters">
+        	<util:map>
+            	<entry key="formAuthenticationFilter" value-ref="formAuthenticationFilter"/>
+        	</util:map>
+    	</property-->
+    	<property name="filterChainDefinitions">
+    	    <!-- authc 是shiro默认支持的filter，其他参见 http://shiro.apache.org/web.html#Web-DefaultFilters -->
+        	<value>
+        	    /login 	= authc
+        	    /logout	= logout
+            	/** = user
+        	</value>
+    	</property>
+    </bean>
+    
+    <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"/>
+    
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="checkRealm"/>
+	</bean>
+	
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+	<!--bean id="checkRealm" class="org.apache.shiro.realm.text.IniRealm" >
+	    <property name="resourcePath" value="classpath:realm.ini"></property>
+	</bean-->
+	
+	<!-- 这个 必须加depends-on 否则会报找不到userRepository这个bean，原因不明！-->
+	<bean id="checkRealm" class="com.check.v3.security.CheckRealm"  depends-on="userRepository" >
+	    <property name="credentialsMatcher" ref="passwordMatcher" />
+	</bean>
+	
+	<bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher">
+	</bean>
+	
+	<bean class="com.check.v3.security.PermissionCheck" />
+</beans>
