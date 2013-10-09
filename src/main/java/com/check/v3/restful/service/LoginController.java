@@ -15,7 +15,10 @@ public class LoginController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	
+	//TODO::通过添加配置让spring mvc识别json请求。
+	//TODO::入参支持json数据
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public User login()
 	{
