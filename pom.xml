@@ -86,11 +86,11 @@
 		</dependency>
 		
 		<!-- postgresql jdbc -->
-		<dependency>
+		<!--dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${org.postgresql.jdbc-version}</version>
-		</dependency>
+		</dependency-->
 		
 		
 		<dependency>
@@ -245,6 +245,11 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-lgpl</artifactId>
 			<version>1.9.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.2-1003-jdbc4</version>
 		</dependency>
 	</dependencies>
     <build>
