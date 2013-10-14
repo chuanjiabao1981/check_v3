@@ -28,6 +28,7 @@ public class UserTool {
 		user.setAccount("test");
 		user.setPassword("12345");
 		userService.save(user);
+		ctx.close();
 	}
 
 }

@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.check.v3">
-		<level value="info" />
+		<level value="trace" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -29,12 +29,12 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="trace" />
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	
