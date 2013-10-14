@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.PasswordMatcher;
@@ -34,6 +35,8 @@ public class User implements Serializable {
 	private int 	version; 
 	private String 	name;
 	private String  account;
+	private String  password;
+	private String  password_verify;
 	private String 	password_cryp;
 	
 	@Id
@@ -72,6 +75,21 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Transient
+	public String getPassword() {
+		return password;
+	}
+
+	@Transient
+	public String getPassword_verify() {
+		return password_verify;
+	}
+
+	public void setPassword_verify(String password_verify) {
+		this.password_verify = password_verify;
+	}
+
 	public void setPassword_cryp(String password_cryp) {
 		this.password_cryp = password_cryp;
 	}
