@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 @Table(name = "users")
 public class User implements Serializable {
 	
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 
 	private static final long serialVersionUID = -15913810676325L;
