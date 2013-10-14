@@ -27,12 +27,7 @@ public class UserController {
 	public String create(
 			@ModelAttribute User user,
 			Model model) {
-//		User user = new User();
-//		user.setName(username);
-//		user.setPassword(password);
-//		user.setAccount(account);
 		System.out.println(user.getName().toString());
-//		user.setPassword(user.getPassword());
 		userService.save(user);
 		return "redirect:users/show";
 	}
