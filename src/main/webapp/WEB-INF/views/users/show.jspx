@@ -7,14 +7,12 @@
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-
     
-    <spring:url value="/contacts" var="editContactUrl"/>    
-    <spring:url value="/contacts/photo" var="contactPhotoUrl"/>
+    <spring:url value="/users" var="editUserUrl"/>    
 
-    <h1>${labelContactInfo}</h1>
+    <h1>User info</h1>
 
-    <div id="contactInfo">
+    <div id="userInfo">
 
         <c:if test="${not empty message}">
             <div id="message" class="${message.type}">${message.message}</div>
@@ -22,28 +20,17 @@
 
         <table>
             <tr>
-                <td>${labelContactFirstName}</td>
-                <td>${contact.firstName}</td>
+                <td>Name</td>
+                <td>${user.name}</td>
             </tr>
             <tr>
-                <td>${labelContactLastName}</td>
-                <td>${contact.lastName}</td>
+                <td>Account</td>
+                <td>${user.account}</td>
             </tr>   
-            <tr>
-                <td>${labelContactBirthDate}</td>
-                <td><joda:format value="${contact.birthDate}" pattern="${dateFormatPattern}"/></td>
-            </tr>
-            <tr>
-                <td>${labelContactDescription}</td>
-                <td>${contact.description}</td>
-            </tr>
-            <tr>
-                <td>${labelContactPhoto}</td>
-                <td><img src="${contactPhotoUrl}/${contact.id}"></img></td>
-            </tr>                                                                                                         
+                                                                          
         </table>         
        
-        <a href="${editContactUrl}/${contact.id}?form">${labelContactUpdate}</a>     
+        <a href="${editUserUrl}/${user.id}?form">Edit user info</a>     
                       
     </div>
 
