@@ -40,9 +40,9 @@
 	
 	<context:component-scan base-package="com.check.v3.web.controller,com.check.v3.rest.controller" />
 	
-	<interceptors>
-		<beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/>
-	</interceptors>
+	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+		<beans:property name="defaultLocale" value="zh_CN"/>
+	</beans:bean>
 	
 	<beans:bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" 
 	    		id="messageSource" 
